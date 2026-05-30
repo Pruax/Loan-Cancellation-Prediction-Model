@@ -2,18 +2,31 @@
 
 ## 🚀 Project Overview
 
-This project focused on identifying and predicting why loans are canceled before reaching their maturity date. Using historical loan data, a machine learning model was developed to predict early loan cancellations and uncover the factors most strongly associated with cancellation behavior.
+This project analyzes historical loan data to predict whether a loan will cancel before reaching its maturity date. A machine learning model was developed to identify loans at high risk of cancellation and uncover the factors most strongly associated with cancellation behavior.
 
-The project combined **predictive analytics**, **statistical analysis**, and **data visualization** techniques to generate actionable business insights.
+The project combines **machine learning**, **exploratory data analysis (EDA)**, **feature engineering**, and **data visualization** techniques to generate actionable business insights and support data-driven decision-making.
+
+---
+
+## 📷 Project Visualizations
+
+| Class Distribution | Confusion Matrix |
+|-------------------|------------------|
+| ![](images/class_distribution.png) | ![](images/confusion_matrix.png) |
+
+### Feature Importance
+
+![](images/feature_importance.png)
 
 ---
 
 ## 🎯 Objectives
 
-- Predict whether a loan would cancel before maturity
+- Predict whether a loan will cancel before maturity
 - Identify the key drivers behind loan cancellations
 - Analyze relationships between loan characteristics and cancellation outcomes
 - Improve business understanding of customer loan behavior
+- Evaluate strategies for handling class imbalance and optimizing model performance
 
 ---
 
@@ -21,25 +34,27 @@ The project combined **predictive analytics**, **statistical analysis**, and **d
 
 - **Python**
 - **Pandas**
-- **NumPy**
 - **Scikit-learn**
-- **Matplotlib / Seaborn**
+- **Imbalanced-Learn (SMOTE)**
+- **Matplotlib**
+- **Seaborn**
 - **Jupyter Notebook**
 
 ---
 
 ## 🤖 Machine Learning Model
 
-A **Random Forest Classifier** was implemented to classify loans based on their likelihood of canceling before maturity.
+A **Random Forest Classifier** was implemented to predict loan cancellations using borrower, financing, and payment-related features.
 
 ### 📌 Why Random Forest?
 
 Random Forest was selected because it:
 
-- Handles large datasets effectively
+- Handles large datasets efficiently
 - Performs well with nonlinear relationships
 - Reduces overfitting through ensemble learning
 - Provides feature importance metrics for interpretability
+- Requires minimal feature scaling and preprocessing
 
 ---
 
@@ -47,63 +62,126 @@ Random Forest was selected because it:
 
 ### 🧹 1. Data Preparation
 
-- Cleaned and preprocessed raw loan data
-- Handled missing values and inconsistent records
-- Selected relevant features for model training
+- Cleaned and preprocessed historical loan data
+- Identified and handled missing values
+- Converted categorical variables using one-hot encoding
+- Selected relevant features for modeling
 
 ### 📈 2. Exploratory Data Analysis (EDA)
 
-- Conducted correlation analysis
+- Examined class imbalance within the target variable
 - Created visualizations to identify trends and patterns
-- Examined relationships between variables and loan cancellation outcomes
+- Performed correlation analysis between loan characteristics and cancellations
+- Investigated relationships between key variables and cancellation outcomes
 
-### ⚙️ 3. Model Development
+### ⚙️ 3. Feature Engineering & Preprocessing
 
+- Encoded categorical variables using `pd.get_dummies()`
 - Split data into training and testing datasets
-- Trained a **Random Forest classification model**
-- Tuned model parameters to improve predictive performance
+- Applied **SMOTE (Synthetic Minority Oversampling Technique)** to address class imbalance
+- Evaluated feature importance using Random Forest
 
-### 📊 4. Model Evaluation
+### 🌲 4. Model Development
 
-The model was evaluated primarily using **Recall**, as minimizing false negatives was critical for identifying loans likely to cancel early.
+- Trained a Random Forest classification model
+- Tuned the classification threshold to improve recall
+- Evaluated multiple feature combinations and model configurations
 
-#### ✅ Results
+### 📊 5. Model Evaluation
 
-- **Recall Score:** **95%**
-- Successfully identified high-risk loans with strong predictive accuracy
-- Revealed key variables contributing to early loan cancellation behavior
+Because the business objective was to identify loans likely to cancel, **Recall** was prioritized to minimize false negatives.
+
+#### ✅ Final Results
+
+| Metric | Score |
+|----------|----------:|
+| Accuracy | **88.6%** |
+| Recall | **97.3%** |
+| Precision | **44.0%** |
+| F1 Score | **60.6%** |
+
+The classification threshold was adjusted to **15%**, allowing the model to identify nearly all loan cancellations while maintaining strong overall accuracy.
+
+---
+
+## 📈 Key Findings
+
+- **Payments Received (`Payments_Rcvd`)** was the most influential predictor of loan cancellation behavior.
+- Loan financing characteristics such as **Premium**, **Amount Financed (`AmtFin`)**, **APR**, and **Down Payment** contributed significantly to model predictions.
+- Applying **SMOTE** improved the model's ability to identify minority-class observations.
+- Threshold tuning substantially increased recall compared to the default Random Forest configuration.
 
 ---
 
 ## 💡 Key Skills Demonstrated
 
-- **Machine Learning**
-- **Predictive Modeling**
-- **Data Analysis**
-- **Data Visualization**
-- **Statistical Analysis**
-- **Python Programming**
-- **Feature Engineering**
-- **Model Evaluation**
+- Machine Learning
+- Predictive Modeling
+- Feature Engineering
+- Data Cleaning & Preprocessing
+- Exploratory Data Analysis (EDA)
+- Data Visualization
+- Class Imbalance Handling (SMOTE)
+- Model Evaluation & Optimization
+- Python Programming
+- Statistical Analysis
 
 ---
 
 ## 📚 Key Takeaways
 
-This project demonstrated how **machine learning** can be leveraged to improve business decision-making within the financial industry. By combining predictive modeling with analytical insights, the project provided a data-driven approach to understanding and forecasting loan cancellation behavior.
+This project demonstrates how machine learning can be leveraged to better understand customer behavior and improve decision-making within the financial industry. By combining predictive modeling with exploratory analysis, the project provides a data-driven approach to identifying and understanding loan cancellation risk.
 
 ---
 
 ## 🔮 Future Improvements
 
-- Compare additional machine learning models (**XGBoost, Logistic Regression, Neural Networks**)
-- Implement cross-validation for further optimization
+- Compare additional machine learning models (**XGBoost**, **Logistic Regression**, **Neural Networks**)
+- Perform hyperparameter tuning using **GridSearchCV**
+- Implement cross-validation for more robust evaluation
 - Deploy the model as an interactive dashboard or web application
-- Incorporate additional financial and customer behavioral data
+- Incorporate additional borrower and financial data sources
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Loan-Cancellation-Prediction.git
+````
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the notebook or Python script to reproduce the analysis and model results.
+
+---
+
+## 📁 Repository Structure
+
+```text
+Loan-Cancellation-Prediction/
+│
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── loan_cancellation_model.py
+│
+├── notebooks/
+│   └── IPFS_DataContest.ipynb
+│
+└── images/
+```
 
 ---
 
 ## 👤 Author
 
-**Brian Kassin**  
+**Brian Kassin**
+
 Management Information Systems Graduate | Data Analytics | Machine Learning | QA & Agile Professional
