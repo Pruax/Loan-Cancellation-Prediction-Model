@@ -149,7 +149,7 @@ This project demonstrates how machine learning can be leveraged to better unders
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Loan-Cancellation-Prediction.git
+git clone https://github.com/your-username/Loan-Cancellation-Prediction-Model.git
 ````
 
 Install dependencies:
@@ -173,7 +173,7 @@ Loan-Cancellation-Prediction/
 ├── loan_cancellation_model.py
 │
 ├── notebooks/
-│   └── IPFS_DataContest.ipynb
+│   └── Loan_Cancellation_Model.ipynb
 │
 └── images/
 ```
